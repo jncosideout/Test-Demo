@@ -55,11 +55,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Students` (
   `idStudents` INT NOT NULL,
-  `+StuFName` VARCHAR(45) NULL,
-  `+StuLName` VARCHAR(45) NULL,
-  `+StuUserN` VARCHAR(45) NULL,
-  `+StuPassW` VARCHAR(45) NULL,
-  `+GPA` INT NULL COMMENT 'this is a derived attribute that makes a calculation based off all class averages of that student',
+  `StuFName` VARCHAR(45) NULL,
+  `StuLName` VARCHAR(45) NULL,
+  `StuUserN` VARCHAR(45) NULL,
+  `StuPassW` VARCHAR(45) NULL,
+  `GPA` INT NULL COMMENT 'this is a derived attribute that makes a calculation based off all class averages of that student',
   PRIMARY KEY (`idStudents`))
 ENGINE = InnoDB;
 
