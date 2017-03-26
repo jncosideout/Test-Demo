@@ -38,15 +38,35 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Courses` (
   `CourseName` VARCHAR(45) NULL,
   `StuFName` VARCHAR(45) NULL,
   `StuLName` VARCHAR(45) NULL,
-  `Coursescol` VARCHAR(45) NULL,
-  `Instructors_idInstructors` INT NOT NULL,
-  PRIMARY KEY (`idCourses`, `Instructors_idInstructors`),
+  'idStu' VARCHAR(45) NULL,
+  `InstrFName` VARCHAR(45) NULL,
+  `InstrLName` VARCHAR(45) NULL,
+  `Instructors_idInstructors` INT NULL,
+  PRIMARY KEY (`idCourses`, `idStu`),
   INDEX `fk_Courses_Instructors1_idx` (`Instructors_idInstructors` ASC),
+  INDEX `fk_Courses_stuFN_idx` (`Students_StuFName` ASC),
+  INDEX `fk_Courses_stuFl_idx` (`Students_StuLName` ASC),
+  INDEX `fk_Courses_stuID_idx` (`Students_idStudents` ASC),
   CONSTRAINT `fk_Courses_Instructors1`
     FOREIGN KEY (`Instructors_idInstructors`)
     REFERENCES `mydb`.`Instructors` (`idInstructors`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE),
+  CONSTRAINT `fk_Courses_stuFN_idx`
+    FOREIGN KEY (`StuFName`)
+    REFERENCES `mydb`.`Students` (`StuFName`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE),
+  CONSTRAINT `fk_Courses_stuLN_idx`
+    FOREIGN KEY (`StuLName`)
+    REFERENCES `mydb`.`Students` (`StuLName`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE),
+  CONSTRAINT `fk_Courses_stuID_idx`
+    FOREIGN KEY (`idStu`)
+    REFERENCES `mydb`.`Students` (`idStudents`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)    
 ENGINE = InnoDB;
 
 
